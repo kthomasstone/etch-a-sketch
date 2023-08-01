@@ -1,0 +1,32 @@
+#content {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.controls {
+  padding: 16px 0px;
+  margin: 0 auto;
+}
+
+button {
+  padding: 16px 32px;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-cell {
+  width: 16px;
+  height: 16px;
+  border: 1px solid black;
+}
+
+/*
+.grid-cell:hover {
+  background-color: blue;
+}
+*/
