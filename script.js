@@ -1,56 +1,60 @@
 // store grid container in variable
 let gridContainer = document.getElementsByClassName("grid-container")[0];
+let gridContainerWidth = gridContainer.offsetWidth;
+let squareRoot = Math.sqrt(gridContainerWidth);
+let cellArea = squareRoot * squareRoot;
+let gridCell = document.getElementsByClassName("grid-cell");
 
-// create grid cell
+// SETUP DEFAULT GRID
 
-function createGridCells() {
-  for (let i = 1; i < 2500; i++) {
+function setupGrid() {
+  for (let i = 1; i < cellArea; i++) {
     let gridCell = document.createElement("div");
     gridCell.classList.add("grid-cell");
     gridContainer.appendChild(gridCell);
   }
 }
-createGridCells();
+setupGrid();
 
-let gridCell = document.getElementsByClassName("grid-cell");
-
-gridContainer.addEventListener("mouseover", function (event) {
+/* HOVER EFFECTS */
+// hover effect mouseover
+gridContainer.addEventListener("mouseover", function(event) {
   if (event.target.classList.contains("grid-cell")) {
     event.target.style.backgroundColor = "blue";
   }
 });
 
-gridContainer.addEventListener("mouseout", function (event) {
+// hover effect mouseout
+gridContainer.addEventListener("mouseout", function(event) {
   if (event.target.classList.contains("grid-cell")) {
     event.target.style.backgroundColor = "";
   }
 });
 
+/* SETUP NEW GRID */
 // if new grid button is clicked, prompt user for the desired number of grid cells per side
 let newGridButton = document.getElementById("new-grid");
 newGridButton.addEventListener("click", createNewGrid);
 
-// CREATE NEW GRID
+// create new grid
 function createNewGrid() {
-  let newGridCellTotal = prompt("number of grid cells on each side?");
-  newGridCellTotal = Number(newGridCellTotal);
   // remove existing grid
-  let oldGrid = document.getElementsByClassName("grid-cell");
+  gridContainer.innerHTML = "";
 
-  while (oldGrid.length > 0) {
-    oldGrid[0].remove();
-  }
+  let gridCellsPerRow = prompt("number of grid cells in each row and column?");
+  gridCellsPerRow = Number(gridCellsPerRow);
+
+  let gridCellTotal = gridCellsPerRow * gridCellsPerRow;
 
   // add new grid to DOM
-  for (let i = 0; i < newGridCellTotal; i++) {
+  for (let i = 0; i < gridCellTotal; i++) {
     let gridCell = document.createElement("div");
     gridCell.classList.add("grid-cell");
+
+    console.log("new grid cell total: " + gridCellTotal);
+    gridCell.style.width = gridContainerWidth / gridCellsPerRow + "px";
+    gridCell.style.height = gridContainerWidth / gridCellsPerRow + "px";
+
     gridContainer.appendChild(gridCell);
   }
 }
-
-// set a limit of 100 squares
-
-// create grid based on prompt answer
-
-//add new grid to gridContainer

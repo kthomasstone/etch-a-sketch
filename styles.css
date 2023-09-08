@@ -1,8 +1,12 @@
+header h1 {
+  text-align: center;
+}
 #content {
   display: flex;
   flex-direction: column;
-  max-width: 960px;
+  width: 100%;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .controls {
@@ -17,12 +21,17 @@ button {
 .grid-container {
   display: flex;
   flex-wrap: wrap;
+  width: 900px;
+  height: 900px;
+  margin: 0 auto;
+  outline: 1px solid red;
 }
 
 .grid-cell {
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  height: 30px;
   border: 1px solid black;
+  box-sizing: border-box;
 }
 
 /*
