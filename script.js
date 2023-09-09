@@ -21,29 +21,19 @@ function setupGrid(size) {
 }
 setupGrid(16);
 
+// UNICORN PUKE EFFECT
 function getRandomColor() {
   // Generate a random color in hexadecimal format
   return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 /* HOVER EFFECTS */
-// hover effect mouseover
+// mouseover
 gridContainer.addEventListener("mouseover", function(event) {
   if (event.target.classList.contains("grid-cell")) {
-    /* event.target.style.backgroundColor = getRandomColor; */
-
     event.target.classList.toggle("grid-cell-active", true);
   }
 });
-
-/*
-// hover effect mouseout
-gridContainer.addEventListener("mouseout", function(event) {
-  if (event.target.classList.contains("grid-cell")) {
-    event.target.classList.toggle("grid-cell-active", false);
-  }
-});
-*/
 
 /* SETUP NEW GRID */
 // if new grid button is clicked, prompt user for the desired number of grid cells per side
