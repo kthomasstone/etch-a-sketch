@@ -1,35 +1,49 @@
 // store grid container in variable
 let gridContainer = document.getElementsByClassName("grid-container")[0];
 let gridContainerWidth = gridContainer.offsetWidth;
-let squareRoot = Math.sqrt(gridContainerWidth);
-let cellArea = squareRoot * squareRoot;
+console.log(gridContainerWidth);
+let cellWidth = Math.sqrt(gridContainerWidth);
+let cellArea = cellWidth * cellWidth;
+
 let gridCell = document.getElementsByClassName("grid-cell");
 
 // SETUP DEFAULT GRID
 
-function setupGrid() {
+function setupGrid(size) {
+  gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
   for (let i = 1; i < cellArea; i++) {
     let gridCell = document.createElement("div");
     gridCell.classList.add("grid-cell");
     gridContainer.appendChild(gridCell);
   }
 }
-setupGrid();
+setupGrid(16);
+
+function getRandomColor() {
+  // Generate a random color in hexadecimal format
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
 
 /* HOVER EFFECTS */
 // hover effect mouseover
 gridContainer.addEventListener("mouseover", function(event) {
   if (event.target.classList.contains("grid-cell")) {
-    event.target.style.backgroundColor = "blue";
+    /* event.target.style.backgroundColor = getRandomColor; */
+
+    event.target.classList.toggle("grid-cell-active", true);
   }
 });
 
+/*
 // hover effect mouseout
 gridContainer.addEventListener("mouseout", function(event) {
   if (event.target.classList.contains("grid-cell")) {
-    event.target.style.backgroundColor = "";
+    event.target.classList.toggle("grid-cell-active", false);
   }
 });
+*/
 
 /* SETUP NEW GRID */
 // if new grid button is clicked, prompt user for the desired number of grid cells per side
@@ -41,20 +55,8 @@ function createNewGrid() {
   // remove existing grid
   gridContainer.innerHTML = "";
 
-  let gridCellsPerRow = prompt("number of grid cells in each row and column?");
-  gridCellsPerRow = Number(gridCellsPerRow);
-
-  let gridCellTotal = gridCellsPerRow * gridCellsPerRow;
-
-  // add new grid to DOM
-  for (let i = 0; i < gridCellTotal; i++) {
-    let gridCell = document.createElement("div");
-    gridCell.classList.add("grid-cell");
-
-    console.log("new grid cell total: " + gridCellTotal);
-    gridCell.style.width = gridContainerWidth / gridCellsPerRow + "px";
-    gridCell.style.height = gridContainerWidth / gridCellsPerRow + "px";
-
-    gridContainer.appendChild(gridCell);
-  }
+  let gridCellsPerRow = Number(
+    prompt("number of grid cells in each row and column?")
+  );
+  setupGrid(gridCellsPerRow);
 }
