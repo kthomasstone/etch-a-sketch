@@ -95,13 +95,13 @@ button:focus {
 #unicorn:hover {
   background-image: linear-gradient(
     to right,
-    violet 0%,
-    indigo 15%,
-    blue 30%,
-    green 45%,
-    yellow 60%,
-    orange 75%,
-    red 100%
+    rgb(218, 111, 218) 0%,
+    rgba(149, 79, 199, 1) 15%,
+    rgba(94, 94, 211, 1) 30%,
+    rgba(65, 188, 65, 1) 45%,
+    rgb(206, 206, 83) 60%,
+    rgb(215, 166, 74) 75%,
+    rgb(204, 74, 74) 100%
   );
   color: white;
   border: none;
@@ -110,13 +110,13 @@ button:focus {
 #unicorn:focus {
   background-image: linear-gradient(
     to right,
-    violet 0%,
-    indigo 15%,
-    blue 30%,
-    green 45%,
-    yellow 60%,
-    orange 75%,
-    red 100%
+    rgb(218, 111, 218) 0%,
+    rgba(149, 79, 199, 1) 15%,
+    rgba(94, 94, 211, 1) 30%,
+    rgba(65, 188, 65, 1) 45%,
+    rgb(206, 206, 83) 60%,
+    rgb(215, 166, 74) 75%,
+    rgb(204, 74, 74) 100%
   );
   color: white;
   border: none;
